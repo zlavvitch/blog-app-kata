@@ -6,12 +6,13 @@ import HeartOutlined from "@ant-design/icons/HeartOutlined";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { fetchArticle } from "../../actions/article";
 import { selectSingleArticle, selectArticleLoadingStatus } from "../../selectors";
 import Spinner from "../Spinner";
 import ErrorMessage from "../ErrorMessage";
 import logo from "../../resources/images/logo.svg";
 import classes from "../Article/Article.module.scss";
+
+import { fetchArticle } from "./articleSlice";
 
 function SingleArticle() {
   const [hasErrorOnImageLoaded, setHasErrorOnImageLoaded] = useState(false);

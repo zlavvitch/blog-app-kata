@@ -40,6 +40,7 @@
         "depth": 3
       }
     ],
+    "no-param-reassign": ["error", { "props": false }],
     // "import/no-unresolved": [2, { "caseSensitive": false }],
     "import/no-unresolved": 2,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

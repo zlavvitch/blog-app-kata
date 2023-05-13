@@ -1,7 +1,7 @@
 import { Pagination } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchArticles } from "../../actions/articles";
+import { fetchArticles } from "../ArticleList/articlesSlice";
 import { selectArticlesCount } from "../../selectors";
 
 function ArticlePagination() {

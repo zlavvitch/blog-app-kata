@@ -7,18 +7,16 @@ import Spinner from "../Spinner";
 import ErrorMessage from "../ErrorMessage";
 import UniqueKey from "../../utilites/uniqueKey";
 import { selectAllArticles, selectArticlesLoadingStatus } from "../../selectors";
-import { fetchArticles } from "../../actions/articles";
 
+import { fetchArticles } from "./articlesSlice";
 import classes from "./ArticleList.module.scss";
 
 function ArticleList() {
   const articles = useSelector(selectAllArticles);
-  // const articlesOffset = useSelector(selectArticlesOffset);
   const articlesLoadingStatus = useSelector(selectArticlesLoadingStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log(articlesOffset);
     dispatch(fetchArticles());
   }, []);
 

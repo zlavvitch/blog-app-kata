@@ -10,7 +10,6 @@ import classes from "./Article.module.scss";
 function Article({ article }) {
   const [hasErrorOnImageLoaded, setHasErrorOnImageLoaded] = useState(false);
   const { slug, username, title, likesCount, description, imagePath, updatedDate } = article;
-  // console.log(text);
 
   // tags, description,
 
