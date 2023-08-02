@@ -1,0 +1,36 @@
+.BtLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #52c41a;
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: none;
+
+  &--disactive {
+    margin-left: 15px;
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+
+  &--special {
+    margin-right: 15px;
+    padding: 5px;
+  }
+
+  &__title {
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #52c41a;
+
+    &--disactive {
+      color: rgba(0, 0, 0, 0.75);
+    }
+
+    &--special {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #52c41a;
+  border-radius: 5px;
+  width: 109px;
+  height: 51px;
+
+  &__link {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #52c41a;
+  }
+}

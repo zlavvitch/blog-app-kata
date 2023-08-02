@@ -1,0 +1,10 @@
+.TxLink {
+  display: block;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.85);
+  margin-right: auto;
+
+  &__content {
+    margin-right: 8px;
+  }
+}
