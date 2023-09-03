@@ -10,15 +10,40 @@
 
   &__header {
     display: flex;
-    margin-bottom: 7px;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    padding: 0;
+
+    // &:focus {
+    //   color: rgba(255, 7, 7, 1);
+    // }
+
+    // &:hover {
+    //   color: rgba(255, 7, 7, 1);
+    // }
+
+    // &--liked {
+    //   color: rgba(255, 7, 7, 1);
+    // }
   }
 
   .Title {
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
 
     &__wrapper {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    &__content {
+      display: flex;
       margin-bottom: 6px;
     }
 
@@ -30,10 +55,35 @@
     &__count {
       margin-left: 5px;
     }
+
+    &__text {
+      font-size: 12px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    // &__wrapper {
+    //   display: flex;
+    //   align-items: center;
+    //   margin-bottom: 6px;
+    // }
   }
 
   .User-info {
-    margin-right: 12px;
+    &__wrapper {
+      margin-right: 12px;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    &__btns {
+      display: flex;
+      justify-content: space-between;
+    }
 
     &__data {
       font-size: 12px;
@@ -42,7 +92,7 @@
     }
   }
 
-  &__content {
+  &__body {
     width: 75%;
 
     &--single {
@@ -56,3 +106,16 @@
     }
   }
 }
+
+// #components-popconfirm-demo-placement .ant-btn {
+//   margin-left: 0;
+//   margin-right: 8px;
+//   margin-bottom: 8px;
+//   width: 70px;
+//   text-align: center;
+//   padding: 0;
+// }
+// #components-popconfirm-demo-placement .ant-btn-rtl {
+//   margin-left: 8px;
+//   margin-right: 0;
+// }

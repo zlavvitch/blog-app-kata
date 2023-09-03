@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export { registerUser } from "./registerUser/registerUser";
 export { loginUser } from "./loginUser/loginUser";
 export { logoutUser } from "./logoutUser/logoutUser";

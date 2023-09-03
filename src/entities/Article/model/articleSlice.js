@@ -1,12 +1,28 @@
 /* eslint-disable no-underscore-dangle */
 import { createSlice } from "@reduxjs/toolkit";
 
-import { fetchArticle } from "../services/fetchArticle";
+import {
+  getArticle,
+  createArticle,
+  editArticle,
+  deleteArticle,
+  setLike,
+  deleteLike,
+  isPendingAction,
+  isRejectedAction,
+} from "../services";
 import { IDLE_STATUS, LOADING_STATUS, SUCCESS_STATUS, FAILURE_STATUS } from "../../../shared";
 
 const initialState = {
   article: {},
   articleLoadingStatus: IDLE_STATUS,
+  error: "",
+};
+
+const changeState = (state, action) => {
+  state.article = action.payload;
+  state.error = "";
+  state.articleLoadingStatus = SUCCESS_STATUS;
 };
 
 const articleSlice = createSlice({
@@ -15,14 +31,18 @@ const articleSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticle.pending, (state) => {
+      .addCase(getArticle.fulfilled, changeState)
+      .addCase(createArticle.fulfilled, changeState)
+      .addCase(editArticle.fulfilled, changeState)
+      .addCase(deleteArticle.fulfilled, changeState)
+      .addCase(setLike.fulfilled, changeState)
+      .addCase(deleteLike.fulfilled, changeState)
+      .addMatcher(isPendingAction, (state) => {
+        state.error = "";
         state.articleLoadingStatus = LOADING_STATUS;
       })
-      .addCase(fetchArticle.fulfilled, (state, action) => {
-        state.article = action.payload;
-        state.articleLoadingStatus = SUCCESS_STATUS;
-      })
-      .addCase(fetchArticle.rejected, (state) => {
+      .addMatcher(isRejectedAction, (state, action) => {
+        state.error = action.payload;
         state.articleLoadingStatus = FAILURE_STATUS;
       })
       .addDefaultCase(() => {});
@@ -31,9 +51,3 @@ const articleSlice = createSlice({
 
 export const { actions: articleActions } = articleSlice;
 export const { reducer: articleReducer } = articleSlice;
-
-// const { actions, reducer } = articleSlice;
-
-// export default reducer;
-
-// export const { articleFetched, articleFetching, articleFetchingError } = actions;

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +12,7 @@ export function FormProfile() {
   const { username, email } = useSelector(selectUser);
   const user = useSelector(selectUser);
   const userLoadingStatus = useSelector(selectUserLoadingStatus);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

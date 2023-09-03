@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 /* eslint-disable no-underscore-dangle */
 
 import { createAsyncThunk } from "@reduxjs/toolkit";

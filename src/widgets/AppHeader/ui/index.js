@@ -1,5 +1,2 @@
-/* eslint-disable import/prefer-default-export */
-import UserAuthed from "./userAuthed";
-import UserNotAuthed from "./userNotAuthed";
-
-export { UserAuthed, UserNotAuthed };
+export { UserAuthed } from "./userAuthed";
+export { UserNotAuthed } from "./userNotAuthed";

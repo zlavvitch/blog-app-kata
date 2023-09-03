@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Page404() {
+export function Page404() {
   const style = {
     marginTop: "20px",
     display: "flex",
@@ -23,5 +23,3 @@ function Page404() {
     </div>
   );
 }
-
-export default Page404;

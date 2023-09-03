@@ -1,3 +1,3 @@
 export { FormProfile } from "./FormProfile";
-
-export { Form } from "./Form";
+export { FormArticle } from "./FormArticle";
+export { FormAuth } from "./FormAuth";

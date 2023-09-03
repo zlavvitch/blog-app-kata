@@ -1,96 +1,93 @@
 import { Link } from "react-router-dom";
-// import { Tag } from "antd";
-import HeartOutlined from "@ant-design/icons/HeartOutlined";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 import { Logo } from "../../shared";
-// import UniqueKey from "../../shared/lib/uniqueKey";
+import { setLike, deleteLike } from "../../entities/Article";
+import { selectUserIsAuth, selectUser } from "../../entities/User";
 
+import { SingleArticleContent, ArticleBtns } from "./ui";
+import { renderTags } from "./lib/renderTags";
 import classes from "./Article.module.scss";
 
-function SingleArticleContent(text) {
-  return (
-    <div className={[`${classes.Article__content} ${classes["Article__content--single"]}`]}>
-      <ReactMarkdown className={classes.Article__markdown} remarkPlugins={[remarkGfm]}>
-        {text}
-      </ReactMarkdown>
-    </div>
-  );
-}
+require("react-dom");
 
-function ArticlesListContent(description) {
-  return (
-    <div className={classes.Article__content}>
-      <p className={classes.Article__text}>{description}</p>
-    </div>
-  );
-}
+window.React2 = require("react");
 
-function Article({ article, content = true }) {
-  const { slug, username, title, likesCount, description, imagePath, updatedDate, text } = article;
+console.log(window.React1 === window.React2);
 
-  // tags,
+export function Article({ article, articleContent = false }) {
+  const dispatch = useDispatch();
+  const [likedLocal, setLikedLocal] = useState(article.liked);
+  const [likesCountLocal, setLikesCountLocal] = useState(article.likesCount);
+  const userIsAuth = useSelector(selectUserIsAuth);
+  const authUserData = useSelector(selectUser);
+
+  const { slug, username, title, tags, description, imagePath, updatedDate, text } = article;
 
   const sliced = (str, l) => `${str.slice(0, l)}...`;
-  // const wraped = (str) => str.replace(/(?![^\n]{1,32}$)([^\n]{1,32})/g, "$1\n");
 
-  // const renderTags = (data) => {
-  //   const TEST = ["wow", "wow", "wow", "wow", "wow"];
-
-  //   const uniqueTags = [...TEST.join(" ").matchAll(/(\w+)\s+\1+/g)];
-
-  //   // .replace(/\b(\w+)\s+\1+\b/g)
-
-  //   console.log(uniqueTags, data.tag);
-
-  //   const rendreData = data.map((tag) => {
-  //     const articleTag = tag.length < 6 ? tag : sliced(tag, 6);
-  //     return <Tag key={UniqueKey()}>{articleTag}</Tag>;
-  //   });
-  //   const elements = data.length < 0 ? null : rendreData;
-
-  //   return elements;
-  // };
-
+  const authUsername = authUserData.username;
+  const content = articleContent ? SingleArticleContent(text) : null;
+  const btns =
+    articleContent && userIsAuth && authUsername === username
+      ? ArticleBtns(slug, `/articles/${slug}/edit`, dispatch)
+      : null;
   const articleTitle = title.length < 20 ? title : sliced(title, 20);
   const articleDescription = description.length < 32 ? description : sliced(description, 32);
+  const stlBtnLike = likedLocal ? `${classes.Article__btn} ${classes["Article__btn--liked"]}` : classes.Article__btn;
 
-  // ???
-  // const articleText = text.length < 32 ? text : wraped(text);
-  const articleText = text;
+  // console.log("HEU");
 
-  // const articleTags = tags.length < 3 ? renderTags(tags) : wraped(tags);
+  const handleClick = () => {
+    if (likedLocal) {
+      dispatch(deleteLike(slug));
+      setLikesCountLocal(likesCountLocal - 1);
+      setLikedLocal(false);
+    }
 
-  // console.log(articleText);
-
-  const articleContent = content ? ArticlesListContent(articleDescription) : SingleArticleContent(articleText);
+    if (!likedLocal) {
+      dispatch(setLike(slug));
+      setLikesCountLocal(likesCountLocal + 1);
+      setLikedLocal(true);
+    }
+  };
 
   return (
     <div className={classes.Article}>
       <header className={classes.Article__header}>
         <div className={classes.Title}>
           <div className={classes.Title__wrapper}>
-            <Link to={`/articles/${slug}`} className={classes.Title__link}>
-              {articleTitle}
-            </Link>
-            <HeartOutlined />
-            <p className={classes.Title__count}>{likesCount}</p>
+            <div className={classes.Title__content}>
+              <Link to={`/articles/${slug}`} className={classes.Title__link}>
+                {articleTitle}
+              </Link>
+              <button type="button" className={stlBtnLike} onClick={handleClick}>
+                {likedLocal ? <HeartFilled style={{ color: "#FF0707" }} /> : <HeartOutlined />}
+              </button>
+              <p className={classes.Title__count}>{likesCountLocal}</p>
+            </div>
+            <div>{renderTags(tags)}</div>
           </div>
-          {/* <Tag>Tag1</Tag> */}
-          {/* {renderTags(tags)} */}
+          <div className={classes.Title__description}>
+            <p className={classes.Title__text}>{articleDescription}</p>
+          </div>
         </div>
         <div className={classes["User-info"]}>
-          <div className={classes["User-info__wrapper"]}>
-            <h3>{username}</h3>
-            <p className={classes["User-info__data"]}>{updatedDate}</p>
+          <div className={classes["User-info__content"]}>
+            <div className={classes["User-info__wrapper"]}>
+              <h3>{username}</h3>
+              <p className={classes["User-info__data"]}>{updatedDate}</p>
+            </div>
+            <Logo className={classes.Logo} image={imagePath} />
           </div>
+          {btns}
         </div>
-        <Logo className={classes.Logo} image={imagePath} />
       </header>
-      {articleContent}
+      {content}
     </div>
   );
 }
 
-export default Article;
+// const wrapped = (str) => str.replace(/(?![^\n]{1,32}$)([^\n]{1,32})/g, "$1\n");

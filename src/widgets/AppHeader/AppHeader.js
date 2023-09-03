@@ -7,7 +7,7 @@ import { TxLink } from "../../shared";
 import { UserAuthed, UserNotAuthed } from "./ui";
 import classes from "./AppHeader.module.scss";
 
-function AppHeader() {
+export function AppHeader() {
   const userIsAuthed = useSelector(selectUserIsAuth);
   const dispatch = useDispatch();
   let headerContent;
@@ -18,7 +18,7 @@ function AppHeader() {
     if (myToken) {
       dispatch(getCurrentUser(myToken));
     }
-  }, []);
+  }, [dispatch]);
 
   switch (userIsAuthed) {
     case false:
@@ -40,5 +40,3 @@ function AppHeader() {
     </header>
   );
 }
-
-export default AppHeader;

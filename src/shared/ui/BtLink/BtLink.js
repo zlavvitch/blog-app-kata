@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { Link } from "react-router-dom";
 
 import classes from "./BtLink.module.scss";
@@ -20,6 +19,16 @@ export function BtLink({ to, title, onClick }) {
 
     case "Create article":
       styleBtLink = `${classes.BtLink} ${classes["BtLink--special"]}`;
+      styleTitle = `${classes.BtLink__title} ${classes["BtLink__title--special"]}`;
+      break;
+
+    case "Delete":
+      styleBtLink = `${classes.BtLink} ${classes["BtLink--red"]} ${classes["BtLink--sm"]}`;
+      styleTitle = `${classes.BtLink__title} ${classes["BtLink__title--red"]} ${classes["BtLink__title--special"]}`;
+      break;
+
+    case "Edit":
+      styleBtLink = `${classes.BtLink} ${classes["BtLink--sm"]}`;
       styleTitle = `${classes.BtLink__title} ${classes["BtLink__title--special"]}`;
       break;
 

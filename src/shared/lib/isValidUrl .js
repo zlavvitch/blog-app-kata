@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const isValidUrl = (urlString) => {
   const urlPattern = new RegExp(
     "^(https?:\\/\\/)?" +

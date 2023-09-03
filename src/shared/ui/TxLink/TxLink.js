@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { Link } from "react-router-dom";
 
 import { Logo } from "../Logo";

@@ -1,6 +1,6 @@
 import { Pagination } from "antd";
 
-function ArticlesPagination({ articlesCount, onChangePage }) {
+export function ArticlesPagination({ articlesCount, onChangePage }) {
   return (
     <Pagination
       currentPage={1}
@@ -11,5 +11,3 @@ function ArticlesPagination({ articlesCount, onChangePage }) {
     />
   );
 }
-
-export default ArticlesPagination;

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import classes from "../../Form.module.scss";
@@ -8,7 +7,7 @@ export function ProfileFormContent(register, errors) {
 
   return (
     <>
-      <label htmlFor="username">
+      <label className={classes.Form__label} htmlFor="username">
         Username
         <input
           {...register("username", {
@@ -25,7 +24,7 @@ export function ProfileFormContent(register, errors) {
       <div className={classes.Form__error}>
         {errors?.password && <p className={classes["Form__error-text"]}>{errors?.username?.message || "Error"}</p>}
       </div>
-      <label htmlFor="email">
+      <label className={classes.Form__label} htmlFor="email">
         Email address
         <input
           {...register("email", {
@@ -40,7 +39,7 @@ export function ProfileFormContent(register, errors) {
       <div className={classes.Form__error}>
         {errors?.password && <p className={classes["Form__error-text"]}>{errors?.email?.message || "Error"}</p>}
       </div>
-      <label htmlFor="password">
+      <label className={classes.Form__label} htmlFor="password">
         New password
         <input
           {...register("password", {
@@ -57,7 +56,7 @@ export function ProfileFormContent(register, errors) {
       <div className={classes.Form__error}>
         {errors?.password && <p className={classes["Form__error-text"]}>{errors?.password?.message || "Error"}</p>}
       </div>
-      <label htmlFor="image">
+      <label className={classes.Form__label} htmlFor="image">
         Avatar image (url)
         <input
           {...register("image", {

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { format } from "date-fns";
 
 export const formatArticle = (article) => ({
@@ -7,7 +6,7 @@ export const formatArticle = (article) => ({
   likesCount: article.favoritesCount,
   tags: article.tagList,
   text: article.body,
-  // liked: article.favorited,
+  liked: article.favorited,
   description: article.description,
   username: article.author.username,
   updatedDate: format(new Date(article.updatedAt), "MMMM d, yyyy"),

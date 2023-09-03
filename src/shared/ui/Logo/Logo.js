@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 import LogoUser from "./LogoUser.svg";
 import classes from "./Logo.module.scss";
 

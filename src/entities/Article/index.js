@@ -1,5 +1,5 @@
 export { articleReducer, articleActions } from "./model/articleSlice";
 
-export { fetchArticle } from "./services/fetchArticle";
+export { getArticle, createArticle, editArticle, deleteArticle, setLike, deleteLike } from "./services";
 
 export { selectSingleArticle, selectArticleLoadingStatus } from "./config/selectors";

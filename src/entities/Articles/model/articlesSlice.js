@@ -2,7 +2,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { IDLE_STATUS, LOADING_STATUS, SUCCESS_STATUS, FAILURE_STATUS } from "../../../shared";
-import { fetchArticles } from "../services/fetchArticles";
+import { fetchArticles } from "../services";
+// import { fetchArticles } from "../services";
 // import formatArticle from "../../../shared/lib/formatArticle";
 
 const initialState = {

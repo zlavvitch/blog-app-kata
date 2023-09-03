@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { Alert } from "antd";
 
 export function ErrorMessage() {
