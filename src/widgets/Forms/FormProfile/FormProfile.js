@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +19,7 @@ export function FormProfile() {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm({ mode: "onTouched", defaultValues: { username, email } });
 
@@ -29,14 +30,7 @@ export function FormProfile() {
     userLoadingStatus !== "loading" ? classes.Form__btn : `${classes.Form__btn} ${classes["Form__btn--disabled"]}`;
 
   const onSubmit = (data) => {
-    let editedUser;
-    if (!data.password) {
-      data.password = localStorage.getItem("password");
-
-      editedUser = { user: { ...user, ...data } };
-    } else {
-      editedUser = { user: { ...user, ...data } };
-    }
+    const editedUser = { user: { ...user, ...data } };
 
     dispatch(updateUser(editedUser));
     navigate("/", { replace: true });
@@ -45,7 +39,7 @@ export function FormProfile() {
   return (
     <form className={classes.Form} onSubmit={handleSubmit(onSubmit)}>
       {contentForm}
-      <input className={styleBtn} type="submit" value={titleBtn} />
+      <input className={styleBtn} type="submit" value={titleBtn} disabled={!isValid} />
     </form>
   );
 }

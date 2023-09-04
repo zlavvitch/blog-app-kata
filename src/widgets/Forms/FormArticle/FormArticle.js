@@ -15,7 +15,6 @@ export function FormArticle({ formType }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //   const userIsAuth = useSelector(selectUserIsAuth);
 
   const defaultFormatTags = (arr) => {
     const newArr = [];
@@ -48,7 +47,6 @@ export function FormArticle({ formType }) {
     register,
     control,
     formState: { errors, isValid },
-    // watch,
     reset,
     handleSubmit,
   } = useForm(dataForm);

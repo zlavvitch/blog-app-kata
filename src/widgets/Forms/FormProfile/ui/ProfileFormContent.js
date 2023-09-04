@@ -3,18 +3,16 @@
 import classes from "../../Form.module.scss";
 
 export function ProfileFormContent(register, errors) {
-  // const { username, email, image } = user;
-
   return (
     <>
       <label className={classes.Form__label} htmlFor="username">
         Username
         <input
           {...register("username", {
-            // required: "Поле обязательное к запоплению.",
+            required: "Поле обязательное к запоплению.",
             pattern: {
               value: /^[a-zA-Z0-9_-]{3,20}$/,
-              message: "Некорректный юзернейм.",
+              message: "Некорректный юзернейм",
             },
             minLength: { value: 3, message: "Минимум 3 символа." },
             maxLength: { value: 20, message: "Максимум 20 символов." },
@@ -22,13 +20,13 @@ export function ProfileFormContent(register, errors) {
         />
       </label>
       <div className={classes.Form__error}>
-        {errors?.password && <p className={classes["Form__error-text"]}>{errors?.username?.message || "Error"}</p>}
+        {errors?.username && <p className={classes["Form__error-text"]}>{errors?.username?.message || "Error"}</p>}
       </div>
       <label className={classes.Form__label} htmlFor="email">
         Email address
         <input
           {...register("email", {
-            // required: "Поле обязательное к запоплению.",
+            required: "Поле обязательное к запоплению.",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
               message: "Некорректный почтовый адрес",
@@ -37,13 +35,13 @@ export function ProfileFormContent(register, errors) {
         />
       </label>
       <div className={classes.Form__error}>
-        {errors?.password && <p className={classes["Form__error-text"]}>{errors?.email?.message || "Error"}</p>}
+        {errors?.email && <p className={classes["Form__error-text"]}>{errors?.email?.message || "Error"}</p>}
       </div>
       <label className={classes.Form__label} htmlFor="password">
         New password
         <input
           {...register("password", {
-            required: "",
+            required: "Поле обязательное к запоплению.",
             // pattern: {
             //   value: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{6,40}$/,
             //   message: "Пароль слишком простой.",
@@ -51,6 +49,8 @@ export function ProfileFormContent(register, errors) {
             minLength: { value: 6, message: "Минимум 6 символа." },
             maxLength: { value: 40, message: "Максимум 40 символов." },
           })}
+          type="password"
+          placeholder="Password"
         />
       </label>
       <div className={classes.Form__error}>
@@ -77,7 +77,7 @@ export function ProfileFormContent(register, errors) {
         />
       </label>
       <div className={classes.Form__error}>
-        {errors?.password && <p className={classes["Form__error-text"]}>{errors?.image?.message || "Error"}</p>}
+        {errors?.image && <p className={classes["Form__error-text"]}>{errors?.image?.message || "Error"}</p>}
       </div>
     </>
   );

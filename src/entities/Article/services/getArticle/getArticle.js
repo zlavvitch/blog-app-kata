@@ -8,12 +8,6 @@ export const getArticle = createAsyncThunk("article/fetchArticle", async (slug, 
   try {
     const res = await fetch(`${_baseURL}articles/${slug}`);
 
-    // if (!res.ok) {
-    //   if (res.status === 500) {
-    //     throw new Error(`Could not fetch article, status ${res.status}`);
-    //   }
-    // }
-
     if (!res.ok) {
       return rejectWithValue("Проблемка");
     }
@@ -21,8 +15,6 @@ export const getArticle = createAsyncThunk("article/fetchArticle", async (slug, 
     const data = await res.json();
 
     const formatData = formatArticle(data.article);
-
-    // console.log("DATA", formatData);
 
     return formatData;
   } catch (err) {

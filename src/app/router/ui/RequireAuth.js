@@ -1,12 +1,8 @@
-import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-
-// import { routeConfig } from "../../../shared/config/routeConfig/routeConfig";
-import { selectUserIsAuth } from "../../../entities/User";
 
 export function RequireAuth({ children }) {
   const location = useLocation();
-  const auth = useSelector(selectUserIsAuth);
+  const auth = localStorage.getItem("token");
 
   if (!auth) {
     return <Navigate to="/sign-in" state={{ from: location }} />;
@@ -14,12 +10,3 @@ export function RequireAuth({ children }) {
 
   return children;
 }
-
-// const auth = useSelector(selectUserIsAuth);
-// const location = useLocation();
-
-// if (!auth) {
-//   return <Navigate to={routeConfig.articles} state={{ from: location }} replace />;
-// }
-
-// return children;

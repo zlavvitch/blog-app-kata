@@ -18,18 +18,6 @@
     background: none;
     border: none;
     padding: 0;
-
-    // &:focus {
-    //   color: rgba(255, 7, 7, 1);
-    // }
-
-    // &:hover {
-    //   color: rgba(255, 7, 7, 1);
-    // }
-
-    // &--liked {
-    //   color: rgba(255, 7, 7, 1);
-    // }
   }
 
   .Title {
@@ -61,12 +49,6 @@
       line-height: 22px;
       color: rgba(0, 0, 0, 0.5);
     }
-
-    // &__wrapper {
-    //   display: flex;
-    //   align-items: center;
-    //   margin-bottom: 6px;
-    // }
   }
 
   .User-info {
@@ -106,16 +88,3 @@
     }
   }
 }
-
-// #components-popconfirm-demo-placement .ant-btn {
-//   margin-left: 0;
-//   margin-right: 8px;
-//   margin-bottom: 8px;
-//   width: 70px;
-//   text-align: center;
-//   padding: 0;
-// }
-// #components-popconfirm-demo-placement .ant-btn-rtl {
-//   margin-left: 8px;
-//   margin-right: 0;
-// }

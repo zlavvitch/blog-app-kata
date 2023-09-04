@@ -14,25 +14,13 @@ export const loginUser = createAsyncThunk("user/loginUser", async (formData, { r
       body: JSON.stringify(formData),
     });
 
-    // if (!res.ok) {
-    //   return rejectWithValue("Email or Username is already taken!");
-    // }
-
     const data = await res.json();
     const { user } = data;
 
     localStorage.setItem("token", data.user.token);
-    localStorage.setItem("password", formData.user.password);
 
     return user;
   } catch (err) {
     return rejectWithValue("Email or Username is already taken!");
   }
 });
-
-// checkStatus = async (res) => {
-//   if (res.status >= 200 && res.status < 300) return await res.json();
-
-//   throw await res.json();
-// };
-// { rejectWithValue }

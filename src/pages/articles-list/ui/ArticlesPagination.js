@@ -1,13 +1,13 @@
 import { Pagination } from "antd";
 
-export function ArticlesPagination({ articlesCount, onChangePage }) {
+export function ArticlesPagination({ currentPage, articlesCount, onChangePage }) {
   return (
     <Pagination
-      currentPage={1}
+      current={currentPage}
       defaultPageSize={5}
       total={articlesCount}
+      onChange={(page) => onChangePage(page)}
       showSizeChanger={false}
-      onChange={(event) => onChangePage(event)}
     />
   );
 }

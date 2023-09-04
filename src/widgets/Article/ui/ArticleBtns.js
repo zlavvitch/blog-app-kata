@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { Popconfirm } from "antd";
 
 import { BtLink } from "../../../shared";
 import { deleteArticle } from "../../../entities/Article";
 import classes from "../Article.module.scss";
 
-export function ArticleBtns(slug, to, dispatch) {
-  const navigate = useNavigate();
+export function ArticleBtns(slug, to, dispatch, navigate) {
   const text = "Are you sure to delete this article?";
 
   const confirm = () => {

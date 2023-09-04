@@ -18,12 +18,10 @@ export const getCurrentUser = createAsyncThunk("user/getCurrentUser", async (myT
     }
 
     const { user } = await res.json();
-    const dataUser = { ...user, password: "" };
 
-    localStorage.setItem("token", dataUser.token);
-    localStorage.getItem("password", dataUser.password);
+    localStorage.setItem("token", user.token);
 
-    return dataUser;
+    return user;
   } catch (err) {
     return rejectWithValue("Login or Password is wrong!");
   }

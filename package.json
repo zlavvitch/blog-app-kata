@@ -65,6 +65,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "2.8.8",
+    "react-app-rewired": "^2.2.1",
     "sass": "^1.62.1"
   },
   "husky": {
@@ -77,6 +78,6 @@
       "npm run lint:fix",
       "npm run format"
     ]
-  }, 
+  },
   "module": ""
 }

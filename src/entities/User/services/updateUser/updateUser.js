@@ -23,8 +23,6 @@ export const updateUser = createAsyncThunk("user/updateUser", async (formData, {
 
     const data = await res.json();
 
-    localStorage.setItem("password", formData.user.password);
-
     return data.user;
   } catch (err) {
     return rejectWithValue("Login or Password is wrong!");

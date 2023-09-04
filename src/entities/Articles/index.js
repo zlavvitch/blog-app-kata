@@ -7,4 +7,5 @@ export {
   selectArticlesOffset,
   selectArticlesCount,
   selectArticlesLoadingStatus,
+  selectArticlesPage,
 } from "./config/selectors";

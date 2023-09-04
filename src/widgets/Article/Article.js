@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -11,18 +11,13 @@ import { SingleArticleContent, ArticleBtns } from "./ui";
 import { renderTags } from "./lib/renderTags";
 import classes from "./Article.module.scss";
 
-require("react-dom");
-
-window.React2 = require("react");
-
-console.log(window.React1 === window.React2);
-
 export function Article({ article, articleContent = false }) {
-  const dispatch = useDispatch();
   const [likedLocal, setLikedLocal] = useState(article.liked);
   const [likesCountLocal, setLikesCountLocal] = useState(article.likesCount);
   const userIsAuth = useSelector(selectUserIsAuth);
   const authUserData = useSelector(selectUser);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { slug, username, title, tags, description, imagePath, updatedDate, text } = article;
 
@@ -30,15 +25,15 @@ export function Article({ article, articleContent = false }) {
 
   const authUsername = authUserData.username;
   const content = articleContent ? SingleArticleContent(text) : null;
+
   const btns =
     articleContent && userIsAuth && authUsername === username
-      ? ArticleBtns(slug, `/articles/${slug}/edit`, dispatch)
+      ? ArticleBtns(slug, `/articles/${slug}/edit`, dispatch, navigate)
       : null;
+
   const articleTitle = title.length < 20 ? title : sliced(title, 20);
   const articleDescription = description.length < 32 ? description : sliced(description, 32);
   const stlBtnLike = likedLocal ? `${classes.Article__btn} ${classes["Article__btn--liked"]}` : classes.Article__btn;
-
-  // console.log("HEU");
 
   const handleClick = () => {
     if (likedLocal) {
@@ -68,7 +63,7 @@ export function Article({ article, articleContent = false }) {
               </button>
               <p className={classes.Title__count}>{likesCountLocal}</p>
             </div>
-            <div>{renderTags(tags)}</div>
+            <div>{tags.length < 0 ? null : renderTags(tags)}</div>
           </div>
           <div className={classes.Title__description}>
             <p className={classes.Title__text}>{articleDescription}</p>

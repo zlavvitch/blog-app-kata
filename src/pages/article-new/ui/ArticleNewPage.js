@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { FormArticle } from "../../../widgets/Forms";
 
 import classes from "./ArticleNewPage.module.scss";

@@ -1,5 +1,4 @@
 /* eslint-disable arrow-body-style */
-/* eslint-disable import/prefer-default-export */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import classes from "../../Form.module.scss";
@@ -15,7 +14,6 @@ export function FormArticleContent(register, errors, fields, remove, append) {
           {...register("title", {
             required: "Поле обязательное к запоплению.",
             minLength: { value: 1, message: "Минимум 1 символ." },
-            // ?? 9к
             maxLength: { value: 20, message: "Максимум 20 символов." },
             // eslint-disable-next-line consistent-return
             validate: (value) => {

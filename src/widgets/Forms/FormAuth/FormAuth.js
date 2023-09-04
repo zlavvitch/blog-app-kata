@@ -67,17 +67,3 @@ export function FormAuth({ formType }) {
     </form>
   );
 }
-
-// const navigate = useNavigate();
-// import { useNavigate } from "react-router-dom";
-// import { useEffect } from "react";
-// selectUserIsAuth
-
-// const userIsAuth = useSelector(selectUserIsAuth);
-// useEffect(() => {
-//   if (userIsAuth) {
-//     navigate("/", { replace: true });
-//   }
-
-//   console.log("NAVIGAT");
-// }, [userIsAuth]);

@@ -8,6 +8,7 @@ import {
   selectAllArticles,
   selectArticlesLoadingStatus,
   selectArticlesCount,
+  selectArticlesPage,
 } from "../../../entities/Articles";
 
 import { ArticlesPagination } from "./ArticlesPagination";
@@ -17,12 +18,12 @@ export function ArticlesListPage() {
   const articles = useSelector(selectAllArticles);
   const articlesLoadingStatus = useSelector(selectArticlesLoadingStatus);
   const articlesCount = useSelector(selectArticlesCount);
-
+  const currentPage = useSelector(selectArticlesPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchArticles());
-  }, [dispatch]);
+    dispatch(fetchArticles(currentPage));
+  }, [dispatch, currentPage]);
 
   const onChangePage = (page) => {
     dispatch(fetchArticles(page));
@@ -39,7 +40,9 @@ export function ArticlesListPage() {
   const spinner = articlesLoadingStatus !== "loading" ? null : <Spinner />;
   const error = articlesLoadingStatus !== "error" ? null : <ErrorMessage />;
   const pagination =
-    elements === null ? null : <ArticlesPagination articlesCount={articlesCount} onChangePage={onChangePage} />;
+    elements === null ? null : (
+      <ArticlesPagination currentPage={currentPage} articlesCount={articlesCount} onChangePage={onChangePage} />
+    );
 
   return (
     <div className={classes.ArticleList}>
