@@ -58,7 +58,13 @@ export function Article({ article, articleContent = false }) {
               <Link to={`/articles/${slug}`} className={classes.Title__link}>
                 {articleTitle}
               </Link>
-              <button type="button" className={stlBtnLike} onClick={handleClick}>
+              <button
+                type="button"
+                className={stlBtnLike}
+                onClick={() => {
+                  if (userIsAuth) handleClick();
+                }}
+              >
                 {likedLocal ? <HeartFilled style={{ color: "#FF0707" }} /> : <HeartOutlined />}
               </button>
               <p className={classes.Title__count}>{likesCountLocal}</p>

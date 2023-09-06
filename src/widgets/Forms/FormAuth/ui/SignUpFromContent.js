@@ -87,7 +87,7 @@ export function SignUpFormContent(register, errors, watch) {
         {errors?.cpassword && <p className={classes["Form__error-text"]}>{errors?.cpassword?.message || "Error"}</p>}
       </div>
       <div style={{ display: "flex", borderTop: "1px solid #E8E8E8", paddingTop: "8px", marginTop: "21px" }}>
-        <input type="checkbox" checked {...register("agreement", { required: "Поле обязательное к запоплению." })} />
+        <input type="checkbox" {...register("agreement", { required: "Поле обязательное к запоплению." })} />
         <label className={classes.Form__label} htmlFor="agreement">
           I agree to the processing of my personal information
         </label>

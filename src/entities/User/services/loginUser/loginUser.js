@@ -21,6 +21,6 @@ export const loginUser = createAsyncThunk("user/loginUser", async (formData, { r
 
     return user;
   } catch (err) {
-    return rejectWithValue("Email or Username is already taken!");
+    return rejectWithValue("Неверная почта или пароль!");
   }
 });

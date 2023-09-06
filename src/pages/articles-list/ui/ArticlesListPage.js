@@ -23,7 +23,8 @@ export function ArticlesListPage() {
 
   useEffect(() => {
     dispatch(fetchArticles(currentPage));
-  }, [dispatch, currentPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onChangePage = (page) => {
     dispatch(fetchArticles(page));

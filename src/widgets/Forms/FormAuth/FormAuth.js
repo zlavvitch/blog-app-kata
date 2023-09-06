@@ -1,17 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { registerUser, loginUser, selectUserLoadingStatus } from "../../../entities/User";
+import { registerUser, loginUser, selectUserLoadingStatus, selectUserIsAuth } from "../../../entities/User";
 import classes from "../Form.module.scss";
 
 import { SignInFormContent, SignUpFormContent } from "./ui";
 
 export function FormAuth({ formType }) {
-  const userLoadingStatus = useSelector(selectUserLoadingStatus);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userLoadingStatus = useSelector(selectUserLoadingStatus);
+  const isAuth = useSelector(selectUserIsAuth);
 
   let contentForm;
   let titleBtn = "";
@@ -27,6 +30,12 @@ export function FormAuth({ formType }) {
   const styleBtn =
     userLoadingStatus !== "loading" ? classes.Form__btn : `${classes.Form__btn} ${classes["Form__btn--disabled"]}`;
 
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuth, navigate]);
+
   const onSubmit = (data) => {
     const { username, email, password } = data;
     reset();
@@ -35,12 +44,10 @@ export function FormAuth({ formType }) {
       const newUser = { user: { username, email, password } };
 
       dispatch(registerUser(newUser));
-      navigate("/", { replace: true });
     } else {
       const user = { user: { email, password } };
 
       dispatch(loginUser(user));
-      navigate("/", { replace: true });
     }
   };
 

@@ -10,11 +10,11 @@ import classes from "../Form.module.scss";
 import { FormArticleContent } from "./ui";
 
 export function FormArticle({ formType }) {
-  const curArticle = useSelector(selectSingleArticle);
-  const { title, description, text, tags, slug } = curArticle;
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const curArticle = useSelector(selectSingleArticle);
+  const { title, description, text, tags, slug } = curArticle;
 
   const defaultFormatTags = (arr) => {
     const newArr = [];
@@ -40,6 +40,7 @@ export function FormArticle({ formType }) {
     mode: "onTouched",
     defaultValues: { title, description, body: text, tags: defaultFormatTags(tags) },
   };
+
   const formData = { mode: "onTouched", defaultValues: { title: "", description: "", body: "", tags: [" "] } };
   const dataForm = formType === "edit" ? curFormData : formData;
 

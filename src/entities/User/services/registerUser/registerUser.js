@@ -22,6 +22,6 @@ export const registerUser = createAsyncThunk("user/registerUser", async (formDat
 
     return user;
   } catch (err) {
-    return rejectWithValue("Email or Username is already taken!");
+    return rejectWithValue("Почта или имя уже занято!");
   }
 });
